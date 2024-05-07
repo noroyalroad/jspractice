@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>baseball</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <!-- 숫자야구 
+  자리도 같고 숫자도 같은 스트라이크 
+  자리는 다른 덴 숫자는 같을 때는 볼   -->
+  <body>
+    <div class="container">
+      <div class="bscontainner">
+        <h2>숫자야구게임</h2>
+        <div class="inputnum">
+          <div class="answer"></div>
+          <div class="answer"></div>
+          <div class="answer"></div>
+        </div>
+        <div class="result"></div>
+        <div class="numbers">
+          <div class="numbers-grid">
+            <button>0</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const btn = document.querySelectorAll(".numbers-grid button");
+      const answer = document.querySelectorAll(".inputnum .answer");
+
+      let index = 0;
+      btn.forEach((v, i) => {
+        v.addEventListener("click", () => {
+          console.log(index);
+
+          if (index >= 3) {
+            index = 0;
+
+            answer.forEach((v) => {
+              v.textContent = "";
+            });
+            answer[index].textContent = v.textContent;
+          } else {
+            answer[index].textContent = v.textContent;
+          }
+          index += 1;
+        });
+      });
+    </script>
+  </body>
+</html>

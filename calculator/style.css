@@ -1,0 +1,79 @@
+body {
+  background-color: wheat;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.frame {
+  width: 350px;
+  height: 500px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: #06597a;
+  border: solid 6px white;
+}
+.result {
+  height: 100px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #f09393;
+  line-height: 100px;
+  /* padding: 25px 15px; */
+  /* overflow: hidden; */
+  /* overflow-wrap: break-word; */
+}
+.numPadFrame {
+  /* width: 100%; */
+  height: 330px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 25px;
+}
+.row-0 {
+  text-align: center;
+  height: 50px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+.row-0 > button {
+  border-radius: 10px;
+  width: 125px;
+  height: 50px;
+  margin: 0px 0px;
+  background-color: #f09393;
+  cursor: pointer;
+  outline: none;
+  border: 0px solid #30bb98;
+}
+.row {
+  border-radius: 10px;
+  text-align: center;
+  height: 50px;
+  margin: 10px;
+  background-color: white;
+}
+.row > button {
+  width: 60px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  background-color: #bdb2b2;
+}
+
+.row > .operation {
+  color: white;
+  background-color: #313132;
+}
+.row > .zero {
+  width: 125px;
+}

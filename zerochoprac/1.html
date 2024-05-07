@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="1.js"></script> -->
+  </head>
+  <body>
+    <!-- 끝말잇기 -->
+    <!-- 몇명이 참여할지 선택  -->
+
+    <!-- 첫번째 사람인지 판단하기  -->
+    <div><span id="number"></span>명이 참가합니다 !</div>
+    <div><span id="order"> </span>번째 참가자</div>
+
+    <div>제시어 : <span id="word"></span></div>
+    <input type="text" />
+    <button>입력</button>
+
+    <script>
+      const number = Number(prompt("몇 명이 참가하나요"));
+
+      console.log(number);
+      const spannumber = document.querySelector("#number");
+      spannumber.textContent = number;
+      let cnt = 0;
+      const order = document.querySelector("#order");
+      order.textContent = cnt + 1;
+      const WORD = document.querySelector("#word");
+
+      let word = "";
+      let newWord = "";
+      console.log(WORD.textContent);
+
+      const input = document.querySelector("input");
+
+      input.addEventListener("input", (e) => {
+        newWord = e.target.value;
+      });
+
+      const click = document.querySelector("button").addEventListener("click", () => {
+        if (newWord.length < 3 || !newWord) {
+          alert("다시 입력하세요 3글자");
+          input.value = " ";
+          input.focus();
+        } else {
+          cnt += 1;
+          order.textContent = (cnt % number) + 1;
+          if (!word) {
+            word = newWord;
+            WORD.textContent = word;
+            input.value = "";
+            input.focus();
+          } else {
+            console.log(word, newWord);
+            if (word[word.length - 1] !== newWord[0] || word === newWord) {
+              alert("틀렸습니다");
+              console.log(word);
+              input.value = "";
+              input.focus();
+            } else {
+              word = newWord;
+              WORD.textContent = word;
+              input.value = "";
+              input.focus();
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
