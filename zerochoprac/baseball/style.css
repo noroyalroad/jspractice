@@ -51,3 +51,33 @@ body {
   font-size: 40px;
   border-radius: 10px;
 }
+.result_item {
+  border-radius: 16px;
+  background-color: #e6e6fa;
+  font-size: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
+.result_item div:first-child {
+  display: flex;
+  padding: 0 20px;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.result_item div:last-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 8px;
+}
+.result_item div:last-child span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}

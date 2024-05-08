@@ -39,25 +39,123 @@
     <script>
       const btn = document.querySelectorAll(".numbers-grid button");
       const answer = document.querySelectorAll(".inputnum .answer");
+      const $result = document.querySelector(".result");
 
       let index = 0;
+
       btn.forEach((v, i) => {
         v.addEventListener("click", () => {
-          console.log(index);
+          answer[index % 3].textContent = v.textContent;
+          v.disabled = true;
 
-          if (index >= 3) {
-            index = 0;
-
-            answer.forEach((v) => {
-              v.textContent = "";
+          if (index % 3 === 2) {
+            rsItem(answer);
+            judge(answer);
+            btn.forEach((v) => {
+              v.disabled = false;
             });
-            answer[index].textContent = v.textContent;
-          } else {
-            answer[index].textContent = v.textContent;
           }
-          index += 1;
+          if (index % 3 === 0) {
+            answer[index % 3].textContent = v.textContent;
+            answer[(index % 3) + 1].textContent = "";
+            answer[(index % 3) + 2].textContent = "";
+          }
+
+          index++;
         });
       });
+
+      const rsItem = (answer) => {
+        const ritem_div = document.createElement("div");
+        ritem_div.className = "result_item";
+        const ritem_div_child_n = document.createElement("div");
+        const ritem_div_child_j = document.createElement("div");
+
+        ritem_div.appendChild(ritem_div_child_n);
+        ritem_div.appendChild(ritem_div_child_j);
+        // console.log(randomNum(answer));
+
+        const s = judge(answer);
+
+        for (let i = 0; i < s.length; i++) {
+          const rspan = document.createElement("span");
+
+          if (s[i] === "S") {
+            rspan.className = `S item-${i + 1}`;
+            rspan.style.backgroundColor = "green";
+            rspan.style.fontSize = "26px";
+          } else if (s[i] === "B") {
+            rspan.className = `B item-${i + 1}`;
+            rspan.style.backgroundColor = "#daa520";
+            rspan.style.fontSize = "26px";
+          } else {
+            rspan.className = `OUT item-${i + 1}`;
+            rspan.style.backgroundColor = "red";
+            rspan.style.fontSize = "18px";
+          }
+          rspan.textContent = s[i];
+          ritem_div_child_j.appendChild(rspan);
+        }
+
+        answer.forEach((v) => {
+          const rspan = document.createElement("span");
+          rspan.textContent = v.textContent;
+          ritem_div_child_n.appendChild(rspan);
+        });
+
+        $result.appendChild(ritem_div);
+        $result.appendChild(ritem_div);
+
+        count(s);
+      };
+
+      const randomNumber = () => {
+        let randomNumber = (Math.floor(Math.random() * 900) + 100).toString();
+
+        while (!hasDuplicateNumber(randomNumber)) {
+          randomNumber = (Math.floor(Math.random() * 900) + 100).toString();
+        }
+        return randomNumber;
+
+        // 똑같은 숫자가 있는지 판단하기
+      };
+      const hasDuplicateNumber = (num) => {
+        num = num.toString();
+        // console.log(num);
+
+        for (let i = 0; i < num.length; i++) {
+          let curr = num[i];
+
+          if (num.indexOf(curr) !== i) {
+            return false;
+          }
+        }
+        return true;
+      };
+      // 자릿 수까지 맞을때
+      // 아니면 숫자만 포함하고 있을때
+      const randomNum = randomNumber();
+      console.log(randomNum);
+
+      // console.log(randomNumber);
+      const judge = (answer) => {
+        let s = [];
+        answer.forEach((v, i) => {
+          if (randomNum.includes(v.textContent) && randomNum.indexOf(v.textContent) === i) {
+            s.push("S");
+          } else if (randomNum.includes(v.textContent) && randomNum.indexOf(v.textContent) !== i) {
+            s.push("B");
+          } else {
+            s.push("OUT");
+          }
+        });
+        return s;
+      };
+
+      const count = (s) => {
+        console.log(s.every((v) => v === "S"));
+        console.log($result.childElementCount);
+      };
     </script>
   </body>
 </html>
