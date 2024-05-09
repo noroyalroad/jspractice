@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <!-- 1. 숫자를 6개를 입력 받는다 .
+  - 중복 숫자 x 
+  - 콤마로 분리하여 작성한다. 
+  - 6개의 숫자가 들어와야 진행할 수 있다 . 
+
+   맞는 숫자는 맞은 표시하고 
+당첨숫자 6개는 1초 간격으로 등장한다. 
+그리고 보너스숫자 
+로또 번호는 중복 숫자가 없어야한다. 
+그리고 무조건 두자리로 출력한다.  -->
+  <body>
+    <input type="text" placeholder=",를 활용하여 6개의 숫자를 입력해주세요" />
+    <button type="button" onclick="handleclick()">입력</button>
+    <script>
+      const $input = document.querySelector("input");
+      const $btn = document.querySelector("button");
+
+      // 숫자 판별
+
+      //
+
+      const handleclick = () => {
+        let num = $input.value;
+        console.log(numTo($input.value));
+      };
+
+      const sixNum = (num) => {
+        if (num.length === 6) {
+          return true;
+        }
+        return false;
+      };
+
+      const numTo = (num) => {
+        let arrnum = num.split(",");
+        const regex = /^(?:\d{1,2}(?:,|$))+$/;
+
+        return regex.test(num);
+      };
+    </script>
+  </body>
+</html>
